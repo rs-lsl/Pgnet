@@ -31,7 +31,7 @@ parser.add_argument('--dataset', type=str, default='WV2')
 parser.add_argument('--in_nc', type=int, default=126, help='number of input image channels')
 parser.add_argument('--endmember', type=int, default=20, help='number of endmember')
 parser.add_argument('--batch_size', type=int, default=15, help='training batch size')
-parser.add_argument('--num_epochs', type=int, default=5, help='number of training epochs')
+parser.add_argument('--num_epochs', type=int, default=500, help='number of training epochs')
 parser.add_argument('--lr', type=float, default=2e-3, help='learning rate')
 parser.add_argument('--resume', type=str, default='', help='path to model checkpoint')
 parser.add_argument('--start_epoch', type=int, default=1, help='restart epoch number for training')
@@ -49,13 +49,13 @@ print(opt)
 def Pgnet(train_hs_image, train_hrpan_image, train_label,
           test_hs_image, test_hrpan_image, test_label,
           ratio=16):
-    # 影像维数
-    # hs_data是真反射率数据
+
     opt.in_nc = train_hs_image.shape[1]
 
     print(train_hs_image.shape)
     print(test_hs_image.shape)
-    #  定义数据和模型
+	
+    #  define data and model
     dataset0 = Mydata(train_hs_image, train_hrpan_image, train_label)
     train_loader = data.DataLoader(dataset0, num_workers=0, batch_size=opt.batch_size,
                                  shuffle=True, drop_last=True)
@@ -77,7 +77,7 @@ def Pgnet(train_hs_image, train_hrpan_image, train_label,
         time0 = time.time()
         loss_total = 0.0
 
-        scheduler.step()
+
         model.train()
         for i, (images_hs, images_pan, labels) in enumerate(train_loader):
             images_hs = images_hs.to(device, dtype=torch.float32)
@@ -102,6 +102,7 @@ def Pgnet(train_hs_image, train_hrpan_image, train_label,
             print('epoch %d of %d, using time: %.2f , loss of train: %.4f' % 
                 (epoch + 1, opt.num_epochs, time.time() - time0, loss_total))
 
+        scheduler.step()
     # torch.save(model.state_dict(), 'model.pth')
 
     # testing model

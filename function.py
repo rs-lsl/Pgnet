@@ -11,9 +11,7 @@ import torch.nn.functional as F
 import gdal
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-# 通用函数
 
-# 写文件，以写成tif为例
 def write_img_gdal(filename, im_data):
     # gdal数据类型包括
     # gdal.GDT_Byte,

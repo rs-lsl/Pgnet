@@ -31,14 +31,14 @@ for i7 in range(save_num):
     if save_images and (not os.path.isdir(save_dir[i7])):
         os.makedirs(save_dir[i7])
 
-'''定义度量指标和度量函数'''
+'''matric indices'''
 ref_results = {}
 ref_results.update({'metrics: ': '  PSNR,    SSIM,   SAM,    ERGAS,   SCC,    Q,     RMSE'})  # 记得更新下面数组长度
 len_ref_metrics = 7
 
 result = []
 result_diff = []
-metrics_result = []  # 存储测试影像指标
+metrics_result = []  
 
 if __name__ == '__main__':
 

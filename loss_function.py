@@ -1,6 +1,5 @@
 import torch
 
-# 实现Sam loss
 class SAMLoss(torch.nn.Module):
     
    def __init__(self):

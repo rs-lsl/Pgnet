@@ -8,9 +8,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-up_ratio = 2  # 基本不变
 kernelsize_temp = 3
-kernelsize_temp2 = 5  # 空间注意力细节程度，越大细节越大
+kernelsize_temp2 = 5  
 padding_mode = 'circular'
 
 def log(base, x):
@@ -87,15 +86,15 @@ class basic_net_nobn(nn.Module):
         temp2 = self.conv2(temp)
         return temp2
 
-# 专门处理全色波段的降采样basic net  与反卷积一起使用
+# downsample pan image
 class pan_net(nn.Module):
     def __init__(self,
                  input_channel: int,
                  output_channel: int,
                  mid_channel: int = 64,
                  kernelsize=3,
-                 stride0=1,  # 控制着降采样ratio
-                 stride1=1):  # 控制着降采样ratio
+                 stride0=1,  
+                 stride1=1):  
         super(pan_net, self).__init__()
         self.output_ch = output_channel
 
@@ -139,7 +138,7 @@ class res_dense_net(nn.Module):
 
         return self.fuse(w1, w2, b1, b2, self.pan_pro(pan), self.deconv(abun))
 
-class pan_net2(nn.Module):  # pixel注意力  乘
+class pan_net2(nn.Module):  # pixel attention
     def __init__(self,
                  endmember_num=32,
                  pan_dim=16,
@@ -147,18 +146,14 @@ class pan_net2(nn.Module):  # pixel注意力  乘
                  ):
         super(pan_net2, self).__init__()
 
-        # self.conv1 = basic_net(1, pan_dim, mid_channel=32)  # 全色升维
-
         self.fuse2 = pan_abunstd(endmember_num=endmember_num)
 
-        self.weight = simple_net(endmember_num, endmember_num)  # 得到像元权重
+        self.weight = simple_net(endmember_num, endmember_num)  
 
         self.act = nn.Sigmoid()
-        # self.act = nn.Tanh()
 
     def forward(self, w1, w2, b1, b2, abun, pan, dim_band=1):
 
-        # temp1 = self.fuse2(self.conv1(pan), abun)     ################## 待测试 #################
         temp1 = self.fuse2(w1, w2, b1, b2, pan, abun)
         return temp1 * self.act(self.weight(temp1)) + abun
 
@@ -176,8 +171,8 @@ class pan_abunstd(nn.Module):
     def forward(self, w1, w2, b1, b2, pan, abun, dim_band=1):
 
         # print(pan.shape)
-        update_weight = F.sigmoid(F.relu(pan - w1 * torch.std(abun, dim=1, keepdim=True) - b1))
-        update_weight2 = F.sigmoid(F.relu(w2 * torch.std(abun, dim=1, keepdim=True) + b2 - pan))
+        update_weight = torch.sigmoid(F.relu(pan - w1 * torch.std(abun, dim=1, keepdim=True) - b1))
+        update_weight2 = torch.sigmoid(F.relu(w2 * torch.std(abun, dim=1, keepdim=True) + b2 - pan))
 
         update_weight = update_weight + update_weight2
 
@@ -188,18 +183,16 @@ class pan_abunstd(nn.Module):
 
 class Pg_net(nn.Module):
     def __init__(self, band=126, endmember_num=10, ratio=16, abun_block_num=4, pan_dim=1,
-                hs_size=4, pan_size=64, up_chan_num=10, up_ratio=2):
+                hs_size=4, pan_size=64, up_chan_num=10):
         super(Pg_net, self).__init__()
         self.band = band
         self.endmember_num = endmember_num
         self.up_chan_num = up_chan_num
         self.ratio = ratio
-        self.upscale_num = int(log(up_ratio, ratio) + 1)
         self.abun_block_num = abun_block_num  # attention block number
         self.pan_dim = pan_dim
         self.pan_blocks0 = 1  # every attention block could have more sub-attention block
 
-        self.up_ratio = up_ratio
 
         self.w1 = nn.Parameter(torch.tensor(1.0))
         self.w2 = nn.Parameter(torch.tensor(-1.0))
@@ -207,7 +200,7 @@ class Pg_net(nn.Module):
         self.b1 = nn.Parameter(torch.tensor(0.3))
         self.b2 = nn.Parameter(torch.tensor(0.3))
 
-        self.upsample16 = nn.Upsample(scale_factor=self.ratio, mode='bicubic')  # 丰度的上采样
+        self.upsample16 = nn.Upsample(scale_factor=self.ratio, mode='bicubic')  
 
         def pan_dict(endmember_num, pan_dim):
             return nn.ModuleList(
@@ -258,7 +251,7 @@ class Pg_net(nn.Module):
 
         return self.dr_layer2(result)
 
-    def decode_forward(self, abun_last, dim_band=1):  # 卷积成融合高光谱影像
+    def decode_forward(self, abun_last, dim_band=1):  
         #  decode to spectral
         return self.decode_filter(abun_last)
 
