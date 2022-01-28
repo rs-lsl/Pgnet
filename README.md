@@ -1,4 +1,7 @@
 # Pgnet
+
+There's a improved version compared with the publication in Tgrs with the modification in the deduction of the PDIN block: https://arxiv.org/abs/2201.11318
+
 Pytorch implement of 'Unmixing based PAN guided fusion network for hyperspectral imagery'
 
 Please change the HSI dataset and SRF path and run the 'main.py' to train the model.
