@@ -12,4 +12,4 @@ We also release the code in paddle version if you use paddle framework in resear
 
 Please consider cite this paper if you find the dataset and code useful. 
 
-If you have any suggestions or questions, please contact the author by 'cug_lsl@cug.edu.cn'.
+If you have any suggestions or questions, please dont hesitate to contact the author: 'cug_lsl@cug.edu.cn'.
