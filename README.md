@@ -16,6 +16,8 @@ If you have any suggestions or questions, please dont hesitate to contact the au
 
 To demonstrate the superiority of the proposed methods, we would like to take a fair comparison between different methods on JIAXING dataset. The training dataset is accout for 80% and the rest is for testing (see detail on "https://aistudio.baidu.com/aistudio/projectdetail/3383847").
 
+The results are as follows:
+
 metrics:    PSNR,    SSIM,   SAM,    ERGAS,   SCC,    Q,     RMSE
 
 Pgnet:    [36.4348, 0.9156, 0.0632, 0.5868, 0.8875, 0.4684, 0.0151] parameters: 49100
