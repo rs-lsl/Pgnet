@@ -14,7 +14,7 @@ Please consider cite this paper if you find the dataset and code useful.
 
 If you have any suggestions or questions, please dont hesitate to contact the author: 'cug_lsl@cug.edu.cn'.
 
-To demonstrate the superiority of the proposed methods, we would like to take a fair comparison between different methods on JIAXING dataset. The training dataset is accout for 80% and the rest is for testing (see detail on "https://aistudio.baidu.com/aistudio/projectdetail/3383847"). The hyperparameters of these methods are all following the original setting.
+To demonstrate the superiority of the proposed methods, we would like to take a fair comparison between different methods on JIAXING dataset. The training dataset is accout for 80% and the rest is for testing. The hyperparameters of these methods are all following the original setting.
 
 The quantitative results are as follows:
 
