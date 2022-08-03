@@ -18,7 +18,7 @@ To demonstrate the superiority of the proposed methods, we would like to take a 
 
 The quantitative results are as follows:
 
-metrics:    PSNR----SSIM-----SAM---ERGAS----SCC-------Q-----RMSE
+metrics:    PSNR----SSIM-----SAM---ERGAS---SCC---Q---RMSE
 
 Pgnet:    35.3327, 0.9080, 0.0766, 0.7511, 0.8592, 0.6385, 0.0173   parameters: 49 100(ours)
 
