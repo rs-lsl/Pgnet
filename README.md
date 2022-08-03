@@ -18,8 +18,8 @@ To demonstrate the superiority of the proposed methods, we would like to take a 
 
 The quantitative results are as follows:
 
-metrics:    PSNR,    SSIM,   SAM,    ERGAS,   SCC,    Q,     RMSE
+metrics:    PSNR----SSIM-----SAM---ERGAS----SCC-------Q-----RMSE
 
-Pgnet:    [36.4348, 0.9156, 0.0632, 0.5868, 0.8875, 0.4684, 0.0151]  kfold: [35.3327, 0.908, 0.0766, 0.7511, 0.8592, 0.6385, 0.0173] parameters: 49 100(ours)
+Pgnet:    35.3327, 0.9080, 0.0766, 0.7511, 0.8592, 0.6385, 0.0173   parameters: 49 100(ours)
 
-RHDN:     [35.8964, 0.9118, 0.0648, 0.6172, 0.8759, 0.4390, 0.0161]  kfold: [35.1154, 0.9046, 0.0758, 0.7597, 0.8575, 0.6184, 0.0178] parameters: 4 788 802 (https://github.com/Jiahuiqu/RHDN)
+RHDN:     35.1154, 0.9046, 0.0758, 0.7597, 0.8575, 0.6184, 0.0178   parameters: 4 788 802 (https://github.com/Jiahuiqu/RHDN)
