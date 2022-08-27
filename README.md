@@ -14,12 +14,3 @@ Please consider cite this paper if you find the dataset and code useful.
 
 If you have any suggestions or questions, please dont hesitate to contact the author: 'cug_lsl@cug.edu.cn'.
 
-To demonstrate the superiority of the proposed methods, we would like to take a fair comparison between different methods on JIAXING dataset. The training dataset is accout for 80% and the rest is for testing. The hyperparameters of these methods are all following the original setting.
-
-The quantitative results are as follows:
-
-metrics:    PSNR---SSIM---SAM---ERGAS---SCC----Q----RMSE
-
-Pgnet:    35.3327, 0.9080, 0.0766, 0.7511, 0.8592, 0.6385, 0.0173   parameters: 49 100(ours)
-
-RHDN:     35.1154, 0.9046, 0.0758, 0.7597, 0.8575, 0.6184, 0.0178   parameters: 4 788 802 (https://github.com/Jiahuiqu/RHDN)
