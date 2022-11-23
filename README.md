@@ -10,7 +10,7 @@ The JiaXing dataset used in this work could be available at "https://aistudio.ba
 
 We also release the code in paddle version if you use paddle framework in research. "https://aistudio.baidu.com/aistudio/projectdetail/3383847". 
 
-Please consider cite this paper if you find the dataset and code useful. 
+Please kindly cite this paper if you find the dataset and code useful. 
 
 If you have any suggestions or questions, please dont hesitate to contact the author: 'cug_lsl@cug.edu.cn'.
 
