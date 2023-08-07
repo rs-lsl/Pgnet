@@ -1,8 +1,9 @@
 # Pgnet
+**UPDATE: We have open source the real ziyuan hyperspectral datasets used in this paper to contribute the hyperspectral image fusion field.**
 
-***There's a improved version compared with the publication in Tgrs with the modification in the deduction of the PDIN block: https://arxiv.org/abs/2201.11318***
+Please see details about the datasets in: https://github.com/rs-lsl/CSSNet
 
-Pytorch implement of 'Unmixing based PAN guided fusion network for hyperspectral imagery'
+Pytorch implement of 'Unmixing based PAN guided fusion network for hyperspectral imagery'(TGRS)
 
 Please change the HSI dataset and SRF path and run the 'main_all.py' to train the model.
 
